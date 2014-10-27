@@ -24,7 +24,8 @@ fNames = ["Masked",
 "Sergey",
 "Type II",
 "Disco",
-"His Highness Lord"
+"His Highness Lord",
+"Soylent"
 ]
 
 lNames = ['The Earl of Keel Haul',
@@ -54,7 +55,8 @@ lNames = ['The Earl of Keel Haul',
 'Kidneybrine',
 'Perpwalk',
 'Thunder',
-'Stallion'
+'Stallion',
+'Codpiece'
 ]
 
 descriptions = ["is wearing his best red 'chaps.",
@@ -75,11 +77,13 @@ descriptions = ["is wearing his best red 'chaps.",
 "his breath smells like methodone.",
 "has a license for that harpoon.",
 "lost his championship belt to a pawn shop.",
-"takes stallion growth', hormones."]
+"takes stallion growth hormones."]
 
 first = fNames[Math.floor(Math.random() * fNames.length)]
 last = lNames[Math.floor(Math.random() * lNames.length)]
 desc = descriptions[Math.floor(Math.random() * descriptions.length)]
 sentence = "[so and so] wrestles as #{first} #{last} and #{desc}!"
 
-console.log(sentence)
+module.exports = (robot) ->
+	robot.respond /what is my wrestling name/i, (msg) ->
+		msg.send sentence
