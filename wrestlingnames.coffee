@@ -80,12 +80,13 @@ descriptions = ["is wearing his best red chaps",
 "lost his championship belt to a pawn shop",
 "takes stallion growth hormones"]
 
-first = fNames[Math.floor(Math.random() * fNames.length)]
-last = lNames[Math.floor(Math.random() * lNames.length)]
-desc = descriptions[Math.floor(Math.random() * descriptions.length)]
-sentence = " wrestles as #{first} #{last} and #{desc}!"
 
 module.exports = (robot) ->
 	robot.respond /give ([\w]+) a wrestling name/i, (msg) ->
+		first = fNames[Math.floor(Math.random() * fNames.length)]
+		last = lNames[Math.floor(Math.random() * lNames.length)]
+		desc = descriptions[Math.floor(Math.random() * descriptions.length)]
+		sentence = " wrestles as #{first} #{last} and #{desc}!"		
 		name = escape(msg.match[1])
+		
 		msg.send name + sentence
