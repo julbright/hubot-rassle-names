@@ -25,7 +25,8 @@ fNames = ["Masked",
 "Type II",
 "Disco",
 "His Highness Lord",
-"Soylent"
+"Soylent",
+"Haystacks"
 ]
 
 lNames = ['The Earl of Keel Haul',
@@ -59,31 +60,32 @@ lNames = ['The Earl of Keel Haul',
 'Codpiece'
 ]
 
-descriptions = ["is wearing his best red 'chaps.",
-"doesn't really need that cane.",
-"is donning the purple shorts.",
-"hails from Parts Unknown.",
-"is led to the ring by the inscrutable ",
-"is weird about being touched.",
-"wishes he'd got his GED.",
-"keeps a taser in that ukelele case.",
-"y lucha con machismo.",
-"claims to be a jack of all deviances.",
-"won't be so easily fooled by your effete manner.",
-"was denied a loan earlier today.",
-"weighs in at 348 lbs and is in breach of any number of restraining orders.",
-"he just had his cape dry cleaned.",
-"isn't really an Austrian prince.",
-"his breath smells like methodone.",
-"has a license for that harpoon.",
-"lost his championship belt to a pawn shop.",
-"takes stallion growth hormones."]
+descriptions = ["is wearing his best red chaps",
+"doesn't really need that cane",
+"is donning the purple shorts",
+"hails from Parts Unknown",
+"is led to the ring by the inscrutable",
+"is weird about being touched",
+"wishes he'd got his GED",
+"keeps a taser in that ukelele case",
+"y lucha con machismo",
+"claims to be a jack of all deviances",
+"won't be so easily fooled by your effete manner",
+"was denied a loan earlier today",
+"weighs in at 348 lbs and is in breach of any number of restraining orders",
+"he just had his cape dry cleaned",
+"isn't really an Austrian prince",
+"his breath smells like methodone",
+"has a license for that harpoon",
+"lost his championship belt to a pawn shop",
+"takes stallion growth hormones"]
 
 first = fNames[Math.floor(Math.random() * fNames.length)]
 last = lNames[Math.floor(Math.random() * lNames.length)]
 desc = descriptions[Math.floor(Math.random() * descriptions.length)]
-sentence = "[so and so] wrestles as #{first} #{last} and #{desc}!"
+sentence = " wrestles as #{first} #{last} and #{desc}!"
 
 module.exports = (robot) ->
-	robot.respond /what is my wrestling name/i, (msg) ->
-		msg.send sentence
+	robot.respond /give ([\w]+) a wrestling name/i, (msg) ->
+		name = escape(msg.match[1])
+		msg.send name + sentence
